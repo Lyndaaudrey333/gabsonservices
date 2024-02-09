@@ -1,0 +1,106 @@
+@extends('layouts.master')
+
+@section('title')
+Modification fournisseur
+@endsection
+
+@section('content')
+@if(session()->has('info'))
+<div class="notification is-success">
+    {{ session('info') }}
+</div>
+@endif
+
+
+<div class="hold-transition sidebar-mini">
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Modification fournisseur</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Fournisseur</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- jquery validation -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Modifier un <small> fournisseur</small></h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form role="form" id="quickForm" action="{{route('suppliers.update')}}" method="post">
+                                @csrf
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="name">Nom</label>
+                                        <input type="name" name="supplier_name" class="form-control" id="name" value="{{$supplier->supplier_name}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email </label>
+                                        <input type="email" name="supplier_email" class="form-control" id="exampleInputEmail1" value="{{$supplier->supplier_email}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address1">Addresse</label>
+                                        <input type="text" name="supplier_address" class="form-control" id="address1" value="{{$supplier->supplier_address}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone1">Téléphone</label>
+                                        <input type="tel" name="supplier_phone" class="form-control" id="phone1" value="{{$supplier->supplier_phone}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+
+                                        <select name="status" id="status">
+                                            <option value="yes">Oui</option>
+                                            <option value="no">Non</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                                    </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <div class="col-md-6">
+
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+
+</div>
+
+
+@endsection
+
