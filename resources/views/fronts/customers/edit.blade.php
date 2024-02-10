@@ -46,7 +46,7 @@ Enregistrer un client
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" id="quickForm" action="{{route('customers.update')}}" method="post">
+                            <form role="form" id="quickForm" action="{{route('customers.update',$customer->id)}}" method="post">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">

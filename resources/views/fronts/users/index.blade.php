@@ -18,11 +18,11 @@ Users list
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
-@if(session()->has('info'))
-<div class="notification is-success text-center mt-2">
-{{ session('info') }}
-</div>
-@endif
+    @if(session()->has('info'))
+    <div class="notification is-success text-center mt-2">
+        {{ session('info') }}
+    </div>
+    @endif
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -76,16 +76,17 @@ Users list
                                             <a href="#" id="delete" class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></a> --}}
                                         <td>
                                             {{-- <a class="button is-primary" href="{{
-route('users.show/'.$user->id) }}">Voir</a> --}}<div class="d-flex justify-content-around">
-                                            <a href="{{route('users.show',$user->id)}}" class="btn btn-success">Voir</a>
-                                            <a href="{{route('users.edit',$user->id)}}" class="btn btn-warning">Modifier</a>
+route('users.show/'.$user->id) }}">Voir</a> --}}
+                                            <div class="d-flex justify-content-around">
+                                             <div>   <a href="{{route('users.show',$user->id)}}" class="btn btn-success btn-sm">Voir</a></div>
+                                            <div>    <a href="{{route('users.edit',$user->id)}}" class="btn btn-warning btn-sm">Modifier</a></div>
 
-                                            <form action="{{route('users.delete',$user->id)}}" method="get">
-                                                @csrf
-                                                @method('DELETE')
+                                                <form action="{{route('users.delete',$user->id)}}" method="get">
+                                                    @csrf
+                                                    @method('DELETE')
 
-                                                <input type="submit" id="delete" class="btn btn-danger" value="Delete">
-                                            </form>
+                                                    <input type="submit" id="delete" class="btn btn-danger btn-sm" value="Delete">
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>

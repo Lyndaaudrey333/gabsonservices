@@ -17,11 +17,11 @@ Categories
 @section('content')
 
 <div class="content-wrapper">
-@if(session()->has('info'))
-<div class="notification is-success text-center mt-2">
-{{ session('info') }}
-</div>
-@endif
+    @if(session()->has('info'))
+    <div class="notification is-success text-center mt-2">
+        {{ session('info') }}
+    </div>
+    @endif
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -30,63 +30,68 @@ Categories
 
                 <div class="card mt-3">
                     <div class="card-header ">
-                      <h3 class="card-title">Toutes les catégories</h3>
-                            <div class="float-right"> <a href="{{route('categories.create')}}">Ajouter une catégorie</a></div>
-                        </div>
+                        <h3 class="card-title">Toutes les catégories</h3>
+                        <div class="float-right"> <a href="{{route('categories.create')}}">Ajouter une catégorie</a></div>
                     </div>
-                     <input type="hidden" {{$increment=1}}>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Num.</th>
-                                    <th>Nom</th>
-                                    <th>Actions</th>
+                </div>
+                <input type="hidden" {{$increment=1}}>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Num.</th>
+                                <th>Nom</th>
+                                <th>Actions</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($categories as $category)
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($categories as $category)
 
-                                <td>{{$increment}}</td>
-                                <td>{{$category->category_name}} </td>
-                                <td>
+                            <td>{{$increment}}</td>
+                            <td>{{$category->category_name}} </td>
+                            <td>
+
                                 <div class="d-flex mx-auto justify-content-around  ">
 
-                                    <a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning btn-sm">Modifier</a>
+                                    <div> <a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning btn-sm">Modifier</a></div>
 
-                                    <form action="{{route('categories.delete',$category->id)}}" method="GET">
+                                    {{-- <form action="{{route('categories.edit',$category->id)}}" method="GET">
                                     @csrf
-                                    @method('DELETE')
-                                    <input type="submit" class="btn btn-danger btn-sm " value="Supprimer">
+                                    <input type="submit" class="btn btn-warning btn-sm " value="Modifier">
+                                    </form> --}}
+                                    <form action="{{route('categories.delete',$category->id)}}" method="GET">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-danger btn-sm " value="Supprimer">
                                     </form>
                                 </div>
-                                </td>
-                                </tr><input type="hidden" {{$increment++}}>
-                                @endforeach
-                            </tbody>
+                            </td>
+                            </tr><input type="hidden" {{$increment++}}>
+                            @endforeach
+                        </tbody>
 
-                            <tfoot>
-                                <tr>
-                                    <th>Num.</th>
-                                    <th>Nom</th>
-                                    <th>Actions</th>
+                        <tfoot>
+                            <tr>
+                                <th>Num.</th>
+                                <th>Nom</th>
+                                <th>Actions</th>
 
-                                </tr>
-                            </tfoot>
-                        </table>
+                            </tr>
+                        </tfoot>
+                    </table>
 
-                    </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
+                <!-- /.card-body -->
             </div>
-            <!-- /.col -->
+            <!-- /.card -->
         </div>
-        <!-- /.row -->
-    </section>
-    <!-- /.content -->
+        <!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

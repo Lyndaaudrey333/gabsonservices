@@ -58,12 +58,16 @@ Fournisseurs
                                 <td>{{$supplier->supplier_email}} </td>
                                 <td>{{$supplier->supplier_address}} </td>
                                 <td>{{$supplier->supplier_phone}} </td>
-                                <td>{{$supplier->status}} </td>
+                               {{-- <td>{{$supplier->status}} </td> --}}
                                 <td>
                                 <div class="d-flex mx-auto justify-content-around  ">
 
-                                    <a href="{{route('suppliers.edit',$supplier->id)}}" class="btn btn-warning btn-sm">Modifier</a>
-
+                <div>                    <a href="{{route('suppliers.edit',$supplier->id)}}" class="btn btn-warning btn-sm">Modifier</a>
+</div>
+                                    {{-- <form action="{{route('suppliers.edit',$supplier->id)}}" method="GET">
+                                        @csrf
+                                        <input type="submit" class="btn btn-warning btn-sm " value="Modifier">
+                                    </form> --}}
                                     <form action="{{route('suppliers.delete',$supplier->id)}}" method="GET">
                                     @csrf
                                     @method('DELETE')

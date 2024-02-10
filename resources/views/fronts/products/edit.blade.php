@@ -20,7 +20,7 @@ Modifier un produit
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Modifier Produit</h1>
+                        <h1>Modification Produit</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -41,27 +41,27 @@ Modifier un produit
                         <!-- jquery validation -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Modifier un <small> Produit</small></h3>
+                                <h3 class="card-title">Ajoutez un <small>Nouveau Produit</small></h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" id="quickForm" action="{{route('products.update')}}" method="post">
+                            <form role="form" id="quickForm" action="{{route('products.update',$product->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="name">Nom</label>
-                                        <input type="name" name="product_name" class="form-control" id="name" placeholder="Inserer le nom du produit">
+                                        <input type="name" name="product_name" class="form-control" id="name" value="{{$product->product_name}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Quantité</label>
-                                        <input type="number" name="quantity" class="form-control" id="exampleInputEmail1" placeholder="Qté">
+                                        <input type="number" name="quantity" class="form-control" id="exampleInputEmail1" value="{{$product->quantity}}">
                                     </div>
                                     <div class="form-group">
                                         <label>Catégorie du produit</label>
-                                        <select class="form-control select2" style="width: 100%;">
-                                            <option selected="selected" name="category_id" value="">Selectionner</option>
+                                        <select name="category_id" class="form-control select2" style="width: 100%;">
+                                            <option selected="selected"  >Selectionner</option>
                                             @foreach ($categories as $category )
-                                            <option>{{$category->category_name}}</option>
+                                            <option value="{{$category->id}}">{{$category->category_name}}</option>
                                             @endforeach
 
 
@@ -69,23 +69,35 @@ Modifier un produit
                                     </div>
                                     <div class="form-group">
                                         <label>Unit</label>
-                                        <select class="form-control select2" style="width: 100%;">
-                                            <option selected="selected" name="unit_id" value="">Selectionner</option>
+                                        <select name="unit_id" class="form-control select2" style="width: 100%;">
+                                            <option selected="selected"  >Selectionner</option>
                                             @foreach ($units as $unit )
-                                            <option>{{$unit->unit_name}}</option>
+                                            <option value="{{$unit->id}}">{{$unit->unit_name}}</option>
                                             @endforeach
 
 
                                         </select>
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="status">Statut</label>
+                                        <label>Fournisseur</label>
+                                        <select name="supplier_id" class="form-control select2" style="width: 100%;">
+                                            <option  selected="selected"  >Selectionner</option>
+                                            @foreach ($suppliers as $supplier )
+                                            <option value="{{$supplier->id}}">{{$supplier->supplier_name}}</option>
+                                            @endforeach
+
+
+                                        </select>
+                                    </div>
+                                    {{-- <div class="form-group">
+                                        <label for="status">Status</label>
 
                                         <select name="status" id="status">
                                             <option value="yes">Oui</option>
                                             <option value="no">Non</option>
                                         </select>
-                                    </div>
+                                    </div> --}}
 
                                     <!-- /.card-body -->
                                     <div class="card-footer">

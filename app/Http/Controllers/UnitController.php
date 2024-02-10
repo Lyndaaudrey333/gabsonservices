@@ -17,7 +17,7 @@ class UnitController extends Controller
 
     public function edit($id)
     {
-        $Unit = Unit::find($id);
+        $unit = Unit::find($id);
 
         return view('fronts.units.edit', compact('unit'));
     }
@@ -33,8 +33,8 @@ class UnitController extends Controller
 
     public function destroy($id)
     {
-        $Unit = Unit::find($id);
-        $Unit->delete();
+        $unit = Unit::find($id);
+        $unit->delete();
 
         return back()->with("info", "Unité a bien ete supprimée dans la base de données");
     }

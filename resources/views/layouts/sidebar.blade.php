@@ -170,6 +170,33 @@
                     </ul>
                 </li>
 
+                <li class="nav-item has-treeview {{request()->is('dashboard/createcustomer') || request()->is('dashboard/customers') ? 'menu-open' : ''}}">
+                    <a href="{{route('customers.index')}}" class="nav-link {{request()->is('dashboard/createcustomer') || request()->is('dashboard/customers') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-folder"></i>
+                        <p>
+                            Clients
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('customers.create')}}" class="nav-link {{request()->is('dashboard/createcustomer') ? 'active' : ''}}">
+                                <i class="far fa-file nav-icon"></i>
+                                <p>Ajouter un client</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('customers.index')}}" class="nav-link {{request()->is('dashboard/customers') ? 'active' : ''}}">
+                                <i class="far fa-file nav-icon"></i>
+                                <p>Clients</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
 
 
 

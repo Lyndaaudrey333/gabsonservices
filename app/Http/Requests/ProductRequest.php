@@ -22,14 +22,14 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'supplier_id'=>'required',
-        'category_id'=>'required',
-        'product_name'=>'required',
-        'quantity'=>'required',
-        'status'=>'required',
-        'created_by'=>'required',
-        'updated_by'=>'required',
-        'unit_id'=>'required',
+            'supplier_id' => 'required',
+            'category_id' => 'required',
+            'product_name' => 'required',
+            'quantity' => 'required',
+            // // 'status'=>'required',
+            // 'created_by'=>'required',
+            // 'updated_by'=>'required',
+            'unit_id' => 'required',
         ];
     }
 }

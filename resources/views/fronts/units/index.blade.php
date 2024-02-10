@@ -2,120 +2,122 @@
 
 @section('title')
 
-Users list
+Unités
 @endsection
 
 
 @section('styles')
-<link rel="stylesheet" href="{{asset('../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-<link rel="stylesheet" href="{{asset('../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 @endsection
-
 
 
 
 @section('content')
 
-
+<div class="content-wrapper">
 @if(session()->has('info'))
 <div class="notification is-success text-center mt-2">
 {{ session('info') }}
 </div>
 @endif
- <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Products</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Products</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">All Products</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Num.</th>
-                    <th>Picture</th>
-                    <th>Product Name</th>
-                    <th>Product Category</th>
-                    <th>Product Price</th>
-                    <th>Actions</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>
-                        <img src="{{asset('backend/dist/img/user2-160x160.jpg')}}" style="height : 50px; width : 50px" class="img-circle elevation-2" alt="User Image">
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>5</td>
-                    <td>
-                      <a href="#" class="btn btn-success">Unactivate</a>
-                      <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
-                      <a href="#" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>
-                      <img src="{{asset('backend/dist/img/user2-160x160.jpg')}}" style="height : 50px; width : 50px" class="img-circle elevation-2" alt="User Image">
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5</td>
-                    <td>5</td>
-                    <td>
-                      <a href="#" class="btn btn-warning">Activate</a>
-                      <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
-                      <a href="#" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
-                    </td>
-                  </tr>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Num.</th>
-                    <th>Picture</th>
-                    <th>Product Name</th>
-                    <th>Product Category</th>
-                    <th>Product Price</th>
-                    <th>Actions</th>
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
+            <div class="col-12">
+                <!-- /.card -->
+
+                <div class="card mt-3">
+                    <div class="card-header ">
+                      <h3 class="card-title">Toutes les unités</h3>
+                            <div class="float-right"> <a href="{{route('units.create')}}">Ajouter une catégorie</a></div>
+                        </div>
+                    </div>
+                     <input type="hidden" {{$increment=1}}>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Num.</th>
+                                    <th>Nom</th>
+                                    <th>Actions</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($units as $unit)
+
+                                <td>{{$increment}}</td>
+                                <td>{{$unit->unit_name}} </td>
+                                <td>
+                                <div class="d-flex justify-content-around  ">
+<div>
+                                    <a href="{{route('units.edit',$unit->id)}}" class="btn btn-warning btn-sm">Modifier</a>
+
+     </div>                               {{-- <form action="{{route('units.edit',$unit->id)}}" method="GET">
+                                        @csrf
+                                        <input type="submit" class="btn btn-warning btn-sm " value="Modifier">
+                                    </form> --}}
+                                    <form action="{{route('units.delete',$unit->id)}}" method="GET">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" class="btn btn-danger btn-sm " value="Supprimer">
+                                    </form>
+                                </div>
+                                </td>
+                                </tr><input type="hidden" {{$increment++}}>
+                                @endforeach
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <th>Num.</th>
+                                    <th>Nom</th>
+                                    <th>Actions</th>
+
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
             </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
+            <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+</div>
+<!-- /.content-wrapper -->
+
+@endsection
+@section('scripts')
+<!-- DataTables -->
+<script src="{{asset('backend')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{asset('backend')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{asset('backend')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{asset('backend')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+<script>
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true
+            , "autoWidth": false
+        , });
+        $('#example2').DataTable({
+            "paging": true
+            , "lengthChange": false
+            , "searching": false
+            , "ordering": true
+            , "info": true
+            , "autoWidth": false
+            , "responsive": true
+        , });
+    });
+
+</script>
 @endsection

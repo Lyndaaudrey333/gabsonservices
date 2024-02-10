@@ -54,7 +54,7 @@ Modifier une unité
 
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('units.update')}}" method="POST">
+                        <form action="{{route('units.update',$unit->id)}}" method="POST">
                             @csrf
 
                             <div class="card-body">
@@ -62,14 +62,14 @@ Modifier une unité
                                     <label for="exampleInputEmail1">Unité :</label>
                                     <input type="text" name="unit_name" class="form-control" id="exampleInputEmail1" placeholder="Veuillez entrer la categorie" required>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="status">Statut</label>
 
                                     <select name="status" id="status">
                                         <option value="yes">Oui</option>
                                         <option value="no">Non</option>
                                     </select>
-                                </div>
+                                </div> --}}
 
                             </div>
                             <!-- /.card-body -->

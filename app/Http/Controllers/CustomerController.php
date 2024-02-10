@@ -10,7 +10,7 @@ class CustomerController extends Controller
 {
     public function store(CustomerRequest $customerRequest)
     {
-        dd($customerRequest);
+
         Customer::create($customerRequest->all());
         return redirect()->route('customers.index')->with("info", "Le client a été
     créé avec succès");

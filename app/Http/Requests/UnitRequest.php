@@ -23,7 +23,7 @@ class UnitRequest extends FormRequest
     {
         return [
             'unit_name'=>'required',
-        'status'=>'required',
+        // 'status'=>'required',
         ];
     }
 }

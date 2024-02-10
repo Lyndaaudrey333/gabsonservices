@@ -38,8 +38,9 @@ class AdminController extends Controller
     public function createproduct (){
         $categories=Category::get();
         $units=Unit::get();
+        $suppliers=Supplier::get();
 
-        return view('fronts.products.create', compact('categories','units'));
+        return view('fronts.products.create', compact('categories','units','suppliers'));
     }
     public function products (){
 

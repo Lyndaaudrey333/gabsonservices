@@ -26,9 +26,9 @@ class CustomerRequest extends FormRequest
             'customer_phone'=>'required',
             'customer_email'=>'required',
             'customer_address'=>'required',
-            'status'=>'required',
-            'created_by'=>'required',
-            'updated_by'=>'required',
+            // 'status'=>'required',
+            // 'created_by'=>'required',
+            // 'updated_by'=>'required',
         ];
     }
 }

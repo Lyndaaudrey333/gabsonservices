@@ -17,11 +17,11 @@ Produits
 @section('content')
 
 <div class="content-wrapper">
-@if(session()->has('info'))
-<div class="notification is-success text-center mt-2">
-{{ session('info') }}
-</div>
-@endif
+    @if(session()->has('info'))
+    <div class="notification is-success text-center mt-2">
+        {{ session('info') }}
+    </div>
+    @endif
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -30,76 +30,80 @@ Produits
 
                 <div class="card mt-3">
                     <div class="card-header ">
-                      <h3 class="card-title">Listes des produits</h3>
-                            <div class="float-right"> <a href="{{route('products.create')}}">Ajouter un produit</a></div>
-                        </div>
+                        <h3 class="card-title">Listes des produits</h3>
+                        <div class="float-right"> <a href="{{route('products.create')}}">Ajouter un produit</a></div>
                     </div>
-                     <input type="hidden" {{$increment=1}}>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Num.</th>
-                                    <th>Nom</th>
-                                    <th>Quantité</th>
-                                    <th>Catégorie</th>
-                                    <th>Fournisseur</th>
-                                    <th>Statut</th>
-                                    <th>Actions</th>
+                </div>
+                <input type="hidden" {{$increment=1}}>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Num.</th>
+                                <th>Nom</th>
+                                <th>Quantité</th>
+                                <th>Catégorie</th>
+                                <th>Fournisseur</th>
+                                {{-- <th>Statut</th> --}}
+                                <th>Actions</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($products as $product)
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($products as $product)
 
-                                <td>{{$increment}}</td>
-                                <td>{{$product->product_name}} </td>
-                                <td>{{$product->quantité}} </td>
-                                <td>{{$product->category_id}} </td>
-                                <td>{{$product->supplier_id}} </td>
-                                <td>{{$product->status}} </td>
-                                <td>
+                            <td>{{$increment}}</td>
+                            <td>{{$product->product_name}} </td>
+                            <td>{{$product->quantity}} </td>
+                            <td>{{$product->category_id}} </td>
+                            <td>{{$product->supplier_id}} </td>
+                            {{-- <td>{{$product->status}} </td> --}}
+                            <td>
                                 <div class="d-flex mx-auto justify-content-around  ">
 
-                                    <a href="{{route('products.edit',$product->id)}}" class="btn btn-warning btn-sm">Modifier</a>
-
-                                    <form action="{{route('products.delete',$product->id)}}" method="GET">
+                                    <div> <a href="{{route('products.edit',$product->id)}}" class="btn btn-warning btn-sm">Modifier</a>
+                                    </div>
+                                    {{-- <form action="{{route('products.edit',$product->id)}}" method="GET">
                                     @csrf
-                                    @method('DELETE')
-                                    <input type="submit" class="btn btn-danger btn-sm " value="Supprimer">
+                                    <input type="submit" class="btn btn-warning btn-sm " value="Modifier">
+                                    </form> --}}
+                                    <form action="{{route('products.delete',$product->id)}}" method="GET">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-danger btn-sm " value="Supprimer">
                                     </form>
                                 </div>
-                                </td>
-                                </tr><input type="hidden" {{$increment++}}>
-                                @endforeach
-                            </tbody>
+                            </td>
+                            </tr><input type="hidden" {{$increment++}}>
+                            @endforeach
+                        </tbody>
 
-                            <tfoot>
-                                <tr>
-                                  <th>Num.</th>
-                                    <th>Nom</th>
-                                    <th>Quantité</th>
-                                    <th>Catégorie</th>
-                                    <th>Fournisseur</th>
-                                    <th>Statut</th>
-                                    <th>Actions</th>
+                        <tfoot>
+                            <tr>
+                                <th>Num.</th>
+                                <th>Nom</th>
+                                <th>Quantité</th>
+                                <th>Catégorie</th>
+                                <th>Fournisseur</th>
+                                {{-- <th>Statut</th> --}}
+                                <th>Actions</th>
 
 
-                                </tr>
-                            </tfoot>
-                        </table>
+                            </tr>
+                        </tfoot>
+                    </table>
 
-                    </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
+                <!-- /.card-body -->
             </div>
-            <!-- /.col -->
+            <!-- /.card -->
         </div>
-        <!-- /.row -->
-    </section>
-    <!-- /.content -->
+        <!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

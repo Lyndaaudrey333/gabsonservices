@@ -64,14 +64,14 @@ Enregistrer un client
                                         <label for="phone1">Téléphone</label>
                                         <input type="tel" name="customer_phone" class="form-control" id="phone1" placeholder="Numero ce telephone">
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="status">Status</label>
 
                                         <select name="status" id="status">
                                             <option value="yes">Oui</option>
                                             <option value="no">Non</option>
                                         </select>
-                                    </div>
+                                    </div> --}}
 
                                     <!-- /.card-body -->
                                     <div class="card-footer">
