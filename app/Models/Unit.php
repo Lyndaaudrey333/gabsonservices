@@ -14,4 +14,7 @@ class Unit extends Model
         'created_by',
         'updated_by'
     ];
+    public function product(){
+        return $this->hasMany(Unit::class);
+    }
 }

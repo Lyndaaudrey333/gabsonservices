@@ -11,17 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('supplier_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
-            $table->foreignId('category_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
-            $table->string('product_name');
-            $table->integer('quantity')->nullable();
+            $table->integer('category_id');
+            $table->integer('product_id');
+            $table->integer('supplier_id');
+            $table->integer('purchase_number');
+            $table->date('date');
+            $table->mediumText('description');
+            $table->integer('buying_quantity');
+            $table->integer('buying_price');
+            $table->integer('unit_price');
             $table->integer('status')->default(1);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
-            $table->foreignId('unit_id')->constrained()->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
         });
     }
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('purchases');
     }
 };

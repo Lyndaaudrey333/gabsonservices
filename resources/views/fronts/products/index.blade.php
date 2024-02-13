@@ -43,6 +43,7 @@ Produits
                                 <th>Num.</th>
                                 <th>Nom</th>
                                 <th>Quantité</th>
+                                <th>Unité</th>
                                 <th>Catégorie</th>
                                 <th>Fournisseur</th>
                                 {{-- <th>Statut</th> --}}
@@ -56,8 +57,9 @@ Produits
                             <td>{{$increment}}</td>
                             <td>{{$product->product_name}} </td>
                             <td>{{$product->quantity}} </td>
-                            <td>{{$product->category_id}} </td>
-                            <td>{{$product->supplier_id}} </td>
+                            <td>{{$product['unit']['unit_name']}}} </td>
+                            <td>{{$product['category']['category_name']}} </td>
+                            <td>{{$product['supplier']['supplier_name']}} </td>
                             {{-- <td>{{$product->status}} </td> --}}
                             <td>
                                 <div class="d-flex mx-auto justify-content-around  ">
@@ -84,6 +86,7 @@ Produits
                                 <th>Num.</th>
                                 <th>Nom</th>
                                 <th>Quantité</th>
+                                <th>Unité</th>
                                 <th>Catégorie</th>
                                 <th>Fournisseur</th>
                                 {{-- <th>Statut</th> --}}
